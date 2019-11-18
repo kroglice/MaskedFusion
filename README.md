@@ -59,6 +59,8 @@ Please cite [MaskFusion]() if you use this repository in your publications:
 
 ## Acknowledgments
 
-We are very thankful to the authors of [DenseFusion](https://github.com/j96w/DenseFusion/) for making their source code available.
+This work was supported by project 026653 (POCI-01-0247-FEDER-026653) INDTECH 4.0 - New technologies for smart manufacturing, cofinanced by the Portugal 2020 Program (PT 2020), Compete 2020 Program and the European Union through the European Regional Development Fund (ERDF).
+
+We are also, very thankful to the authors of [DenseFusion](https://github.com/j96w/DenseFusion/) for making their source code available.
 
 
