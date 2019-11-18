@@ -26,10 +26,7 @@ MaskedFusion is a framework to estimate 6D pose of objects using RGB-D data, wit
 
 ## Code
 
-Since our code was based on the [DenseFusion](https://github.com/j96w/DenseFusion/blob/master/README.md), our structure is the same.
-Some issues that you may have can also be solved in their [GitHub](https://github.com/j96w/DenseFusion/).
-
-
+Since our code was initially based on the [DenseFusion](https://github.com/j96w/DenseFusion/blob/master/README.md) structure, some issues that you can happen to have, might have been solved already in their [GitHub](https://github.com/j96w/DenseFusion/) Issue Page.
 
 ## Dataset
 
