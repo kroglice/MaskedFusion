@@ -10,7 +10,7 @@ This repository is the implementation code of the paper "MaskedFusion: Mask-base
 
 ## Overview
 
-MaskedFusion is a framework to estimate 6D pose of objects using RGB-D data, with an architecture that leverages multiple stages in a pipeline to achieve accurate 6D poses. 6D pose estimation is an open challenge due to complex world objects and many possible problems when capturing data from the real world, e.g., occlusions, truncations, and noise in the data. Achieving accurate 6D poses will improve results in other open problems like robot grasping or positioning objects in augmented reality. MaskedFusion improves upon DenseFusion where the key differences are in pre-processing data before it enters the Neural Network (NN), eliminating non-relevant data, and adding additional features extracted from the mask of the objects to the NN to improve its estimation. It achieved 5.9mm average error on the widely used LineMOD dataset, wich is an improvement, of more than 20%, compared to the state-of-the-art method, DenseFusion.
+MaskedFusion is a framework to estimate 6D pose of objects using RGB-D data, with an architecture that leverages multiple stages in a pipeline to achieve accurate 6D poses. 6D pose estimation is an open challenge due to complex world objects and many possible problems when capturing data from the real world, e.g., occlusions, truncations, and noise in the data. Achieving accurate 6D poses will improve results in other open problems like robot grasping or positioning objects in augmented reality. MaskedFusion improves upon DenseFusion where the key differences are in pre-processing data before it enters the Neural Network (NN), eliminating non-relevant data, and adding additional features extracted from the mask of the objects to the NN to improve its estimation. It achieved 5.9mm average error on the widely used LineMOD dataset, wich is an improvement of more than 20%, compared to the state-of-the-art method, DenseFusion.
 
 
 
@@ -50,8 +50,20 @@ sh experiments/scrips/train_linemod.sh
 
 ## Citations
 
-Please cite [MaskFusion]() if you use this repository in your publications:
-
+If you use this code, please cite:
+```
+@article{pereira2019maskedfusion,
+     title={Masked{F}usion: Mask-based 6D Object Pose Detection},
+     author={Nuno Pereira and Lu\'is A. Alexandre},
+     url       = {http://arxiv.org/abs/1911.07771},
+     journal   = {CoRR},
+     volume    = {abs/1911.07771},
+     year={2019},
+     eprint={1911.07771},
+     archivePrefix={arXiv},
+     primaryClass={cs.CV}
+}
+```
 
 
 ## Acknowledgments
