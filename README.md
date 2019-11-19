@@ -4,7 +4,9 @@
 	<img src ="img.png" width="1000" />
 </p>
 
-This repository is the implementation code of the paper "MaskedFusion: Mask-based 6D Object Pose Detection", available on [arXiv]().
+
+
+This repository is the implementation code of the paper "MaskedFusion: Mask-based 6D Object Pose Detection", available on [arXiv](https://arxiv.org/abs/1911.07771).
 
 
 
@@ -24,9 +26,12 @@ MaskedFusion is a framework to estimate 6D pose of objects using RGB-D data, wit
 * logging
 
 
+
 ## Code
 
 Since our code was initially based on the [DenseFusion](https://github.com/j96w/DenseFusion/blob/master/README.md) structure, some issues that you can happen to have, might have been solved already in their [GitHub](https://github.com/j96w/DenseFusion/) Issue Page.
+
+
 
 ## Dataset
 
