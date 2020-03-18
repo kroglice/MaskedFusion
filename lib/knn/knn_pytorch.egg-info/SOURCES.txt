@@ -1,0 +1,8 @@
+setup.py
+/home/k7/WorkingNewDenseFusion/DenseFusion-Pytorch-1.0/lib/knn/src/vision.cpp
+/home/k7/WorkingNewDenseFusion/DenseFusion-Pytorch-1.0/lib/knn/src/cpu/knn_cpu.cpp
+/home/k7/WorkingNewDenseFusion/DenseFusion-Pytorch-1.0/lib/knn/src/cuda/knn.cu
+knn_pytorch.egg-info/PKG-INFO
+knn_pytorch.egg-info/SOURCES.txt
+knn_pytorch.egg-info/dependency_links.txt
+knn_pytorch.egg-info/top_level.txt

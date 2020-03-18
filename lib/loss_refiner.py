@@ -17,7 +17,7 @@ def loss_calculation(pred_r, pred_t, target, model_points, idx, points, num_poin
     num_input_points = len(points[0])
 
     pred_r = pred_r / (torch.norm(pred_r, dim=2).view(bs, num_p, 1))
-    
+
     base = torch.cat(((1.0 - 2.0*(pred_r[:, :, 2]**2 + pred_r[:, :, 3]**2)).view(bs, num_p, 1),\
                       (2.0*pred_r[:, :, 1]*pred_r[:, :, 2] - 2.0*pred_r[:, :, 0]*pred_r[:, :, 3]).view(bs, num_p, 1), \
                       (2.0*pred_r[:, :, 0]*pred_r[:, :, 2] + 2.0*pred_r[:, :, 1]*pred_r[:, :, 3]).view(bs, num_p, 1), \
@@ -27,7 +27,7 @@ def loss_calculation(pred_r, pred_t, target, model_points, idx, points, num_poin
                       (-2.0*pred_r[:, :, 0]*pred_r[:, :, 2] + 2.0*pred_r[:, :, 1]*pred_r[:, :, 3]).view(bs, num_p, 1), \
                       (2.0*pred_r[:, :, 0]*pred_r[:, :, 1] + 2.0*pred_r[:, :, 2]*pred_r[:, :, 3]).view(bs, num_p, 1), \
                       (1.0 - 2.0*(pred_r[:, :, 1]**2 + pred_r[:, :, 2]**2)).view(bs, num_p, 1)), dim=2).contiguous().view(bs * num_p, 3, 3)
-    
+
     ori_base = base
     base = base.contiguous().transpose(2, 1).contiguous()
     model_points = model_points.view(bs, 1, num_point_mesh, 3).repeat(1, num_p, 1, 1).view(bs * num_p, num_point_mesh, 3)
@@ -42,7 +42,7 @@ def loss_calculation(pred_r, pred_t, target, model_points, idx, points, num_poin
         target = target[0].transpose(1, 0).contiguous().view(3, -1)
         pred = pred.permute(2, 0, 1).contiguous().view(3, -1)
         inds = knn(target.unsqueeze(0), pred.unsqueeze(0))
-        target = torch.index_select(target, 1, inds.view(-1) - 1)
+        target = torch.index_select(target, 1, inds.view(-1).detach() - 1)
         target = target.view(3, bs * num_p, num_point_mesh).permute(1, 2, 0).contiguous()
         pred = pred.view(3, bs * num_p, num_point_mesh).permute(1, 2, 0).contiguous()
 

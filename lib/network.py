@@ -113,6 +113,7 @@ class PoseNet(nn.Module):
         out_mask = self.cnn(mask)
 
         #print("out_mask", out_mask.shape)
+        #l=input("...Stop...")
 
         bs, di, _, _ = out_img.size()
 

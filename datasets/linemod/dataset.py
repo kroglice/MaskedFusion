@@ -106,7 +106,6 @@ class PoseDataset(data.Dataset):
         mask_depth = ma.getmaskarray(ma.masked_not_equal(depth, 0))
         if self.mode == 'eval':
             mask_label = ma.getmaskarray(ma.masked_equal(label, np.array(255)))
-            #mask_label = ma.getmaskarray(ma.masked_equal(label, np.array([255, 255, 255])))[:, :, 0]
         else:
             mask_label = ma.getmaskarray(ma.masked_equal(label, np.array([255, 255, 255])))[:, :, 0]
 
@@ -117,13 +116,8 @@ class PoseDataset(data.Dataset):
 
         img = np.array(img)[:, :, :3]
 
-        #print("img", img.shape)
-
         img = np.transpose(img, (2, 0, 1))
         img_masked = img
-
-        #print("1", img_masked.shape)
-
 
         if self.mode == 'eval':
             rmin, rmax, cmin, cmax = get_bbox(mask_to_bbox(mask_label))
@@ -132,18 +126,9 @@ class PoseDataset(data.Dataset):
 
         img_masked = img_masked[:, rmin:rmax, cmin:cmax]
 
-        #print("2", img_masked.shape)
-        #print("label1", label.shape)
         my_mask = np.transpose(label, (2, 0, 1))
-        #print("label2", my_mask.shape)
 
         my_mask = my_mask[:, rmin:rmax, cmin:cmax]  ## Added by me to crop the mask
-
-        #print("label3", my_mask.shape)
-        #print("...End...")
-
-        #p_img = np.transpose(img_masked, (1, 2, 0))
-        #scipy.misc.imsave('evaluation_result/{0}_input.png'.format(index), p_img)
 
         target_r = np.resize(np.array(meta['cam_R_m2c']), (3, 3))
         target_t = np.array(meta['cam_t_m2c'])
@@ -190,31 +175,12 @@ class PoseDataset(data.Dataset):
             target = np.add(target, target_t / 1000.0)
             out_t = target_t / 1000.0
 
-        #print("...\n", my_mask)
-        #print("shape", my_mask.shape)
-        #print("shape", img_masked.shape)
-
         mask_img = np.transpose(my_mask, (1, 2, 0))
         img_rgb = np.transpose(img_masked, (1, 2, 0))
         croped_img_mask = cv2.bitwise_and(mask_img, img_rgb)
-        '''
-        print(mask_img.shape)
-        print(img_rgb.shape)
-        print(self.list_depth[index])
-        print(self.list_label[index])
-        cv2.imwrite('/home/k7/WorkingNewDenseFusion/DenseFusionMaskOnly/img.png', croped_img_mask)
-        cv2.imwrite('/home/k7/WorkingNewDenseFusion/DenseFusionMaskOnly/mask.png', mask_img)
-        '''
+
         croped_img_mask = np.transpose(croped_img_mask, (2, 0, 1))
-        '''
-        return torch.from_numpy(cloud.astype(np.float32)), \
-               torch.LongTensor(choose.astype(np.int32)), \
-               self.norm(torch.from_numpy(img_masked.astype(np.float32))), \
-               torch.from_numpy(target.astype(np.float32)), \
-               torch.from_numpy(model_points.astype(np.float32)), \
-               torch.LongTensor([self.objlist.index(obj)]), \
-               torch.from_numpy(my_mask.astype(np.float32))
-        '''
+
         return torch.from_numpy(cloud.astype(np.float32)), \
                torch.LongTensor(choose.astype(np.int32)), \
                self.norm(torch.from_numpy(croped_img_mask.astype(np.float32))), \
@@ -244,7 +210,6 @@ img_length = 640
 
 def mask_to_bbox(mask):
     mask = mask.astype(np.uint8)
-    #_, contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     x = 0
     y = 0

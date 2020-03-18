@@ -46,7 +46,7 @@ refiner.load_state_dict(torch.load(opt.refine_model))
 estimator.eval()
 refiner.eval()
 
-testdataset = PoseDataset_linemod('eval', num_points, False, opt.dataset_root, 0.0, True)
+testdataset = PoseDataset_linemod('test', num_points, False, opt.dataset_root, 0.0, True)
 testdataloader = torch.utils.data.DataLoader(testdataset, batch_size=1, shuffle=False, num_workers=8)
 
 sym_list = testdataset.get_sym_list()
@@ -69,7 +69,6 @@ import time
 start_time = time.time()
 
 for i, data in enumerate(testdataloader, 0):
-    #points, choose, img, target, model_points, idx = data
     points, choose, img, target, model_points, idx, mask = data
 
     if len(points.size()) == 2:
@@ -133,8 +132,6 @@ for i, data in enumerate(testdataloader, 0):
         my_t = my_t_final
 
     # Here 'my_pred' is the final pose estimation result after refinement ('my_r': quaternion, 'my_t': translation)
-    print("--- %s seconds ---" % (time.time() - inner_time))
-    l=input("next")
     model_points = model_points[0].cpu().detach().numpy()
     my_r = quaternion_matrix(my_r)[:3, :3]
     pred = np.dot(model_points, my_r.T) + my_t
