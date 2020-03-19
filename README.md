@@ -54,6 +54,7 @@ pip install -U -r requirements.txt
 ## Dataset
 
 Download preprocessed LineMOD and YCB-Video dataset using:
+
 ```
 sh download_datasets.sh
 ```
@@ -65,6 +66,7 @@ sh download_datasets.sh
 ### Train on LineMOD Dataset
 
 Just run:
+
 ```
 sh experiments/scrips/train_linemod.sh
 ```
@@ -74,6 +76,7 @@ sh experiments/scrips/train_linemod.sh
 ### Train on YCB-Video Dataset
 
 Just run:
+
 ```
 sh experiments/scrips/train_ycb.sh
 ```
@@ -89,13 +92,11 @@ Since our code was initially based on the [DenseFusion](https://github.com/j96w/
 ## Citations
 
 If you use this code, please cite:
+
 ```
-@article{pereira2019maskedfusion,
-     title={Masked{F}usion: Mask-based 6D Object Pose Estimation},
-     author={Nuno Pereira and Lu\'is A. Alexandre},
-     url       = {http://arxiv.org/abs/1911.07771},
-     journal   = {CoRR},
-     volume    = {abs/1911.07771},
+@misc{pereira2019maskedfusion,
+     title={MaskedFusion: Mask-based 6D Object Pose Estimation},
+     author={Nuno Pereira and Luís A. Alexandre},
      year={2019},
      eprint={1911.07771},
      archivePrefix={arXiv},
@@ -104,10 +105,10 @@ If you use this code, please cite:
 ```
 
 
+
 ## Acknowledgments
 
 This work was supported by project 026653 (POCI-01-0247-FEDER-026653) INDTECH 4.0 - New technologies for smart manufacturing, cofinanced by the Portugal 2020 Program (PT 2020), Compete 2020 Program and the European Union through the European Regional Development Fund (ERDF).
 
 We are also, very thankful to the authors of [DenseFusion](https://github.com/j96w/DenseFusion/) for making their source code available.
-
 
