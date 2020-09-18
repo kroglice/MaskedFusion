@@ -94,13 +94,12 @@ Since our code was initially based on the [DenseFusion](https://github.com/j96w/
 If you use this code, please cite:
 
 ```
-@misc{pereira2019maskedfusion,
-     title={MaskedFusion: Mask-based 6D Object Pose Estimation},
-     author={Nuno Pereira and Luís A. Alexandre},
-     year={2019},
-     eprint={1911.07771},
-     archivePrefix={arXiv},
-     primaryClass={cs.CV}
+@inproceedings{pereira2020maskedfusion,
+    title={Masked{F}usion: Mask-based 6D Object Pose Estimation},
+    author={Nuno Pereira and Lu\'is A. Alexandre},
+    booktitle={19th IEEE International Conference on Machine Learning and Applications (ICMLA 2020)},
+    month={December},
+    year={2020}
 }
 ```
 
